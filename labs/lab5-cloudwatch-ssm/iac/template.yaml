@@ -1,0 +1,9 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  DbPasswordParameter:
+    Type: 'AWS::SSM::Parameter'
+    Properties:
+      Name: /production/database/password
+      Description: Production RDS Password
+      Type: SecureString
+      Value: 'SuperSecretDBPassword123!'

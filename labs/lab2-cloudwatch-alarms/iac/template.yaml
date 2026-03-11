@@ -1,0 +1,23 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  AlertsTopic:
+    Type: 'AWS::SNS::Topic'
+    Properties: {TopicName: CriticalAlertsTopic}
+  EmailSubscription:
+    Type: 'AWS::SNS::Subscription'
+    Properties:
+      TopicArn: !Ref AlertsTopic
+      Protocol: email
+      Endpoint: admin@mycompany.com
+  HighErrorAlarm:
+    Type: 'AWS::CloudWatch::Alarm'
+    Properties:
+      AlarmName: HighErrorRateAlarm
+      ComparisonOperator: GreaterThanOrEqualToThreshold
+      EvaluationPeriods: 1
+      MetricName: AppErrorCount
+      Namespace: MyApp
+      Period: 300
+      Statistic: Sum
+      Threshold: 1
+      AlarmActions: [!Ref AlertsTopic]

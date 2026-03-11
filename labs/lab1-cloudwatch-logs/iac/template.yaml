@@ -1,0 +1,17 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Resources:
+  AppLogGroup:
+    Type: 'AWS::Logs::LogGroup'
+    Properties: {LogGroupName: /app/production}
+  AppLogStream:
+    Type: 'AWS::Logs::LogStream'
+    Properties: {LogGroupName: !Ref AppLogGroup, LogStreamName: instance-01}
+  ErrorMetricFilter:
+    Type: 'AWS::Logs::MetricFilter'
+    Properties:
+      LogGroupName: !Ref AppLogGroup
+      FilterPattern: ERROR
+      MetricTransformations:
+        - MetricName: AppErrorCount
+          MetricNamespace: MyApp
+          MetricValue: '1'
