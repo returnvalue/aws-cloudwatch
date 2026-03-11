@@ -13,7 +13,7 @@ Based on AWS best practices (SAA-C03), these labs cover:
 * **Custom Metrics:** Publishing application-specific data points for monitoring.
 * **API Auditing:** Implementing CloudTrail to track account activity for security and compliance.
 * **Continuous Compliance:** Using AWS Config to automate resource evaluation and reporting.
-* **Dashboards:** (Upcoming) Visualizing infrastructure health and performance.
+* **Secure Operations:** Managing secrets and configuration with SSM Parameter Store.
 
 ## ⚙️ Prerequisites
 
@@ -41,3 +41,4 @@ Based on AWS best practices (SAA-C03), these labs cover:
 2. [Lab 2: Automated Alerting (CloudWatch Alarms & SNS)](./labs/lab2-cloudwatch-alarms/README.md)
 3. [Lab 3: API Auditing with AWS CloudTrail](./labs/lab3-cloudwatch-audit/README.md)
 4. [Lab 4: Continuous Compliance (AWS Config)](./labs/lab4-cloudwatch-config/README.md)
+5. [Lab 5: Secure Operations (Systems Manager Parameter Store)](./labs/lab5-cloudwatch-ssm/README.md)
