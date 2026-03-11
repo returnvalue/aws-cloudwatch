@@ -11,6 +11,7 @@ Based on AWS best practices (SAA-C03), these labs cover:
 * **Metric Filters:** Automatically extracting numerical data from text logs for monitoring.
 * **CloudWatch Alarms:** Setting thresholds to trigger notifications or automated actions via SNS.
 * **Custom Metrics:** Publishing application-specific data points for monitoring.
+* **API Auditing:** Implementing CloudTrail to track account activity for security and compliance.
 * **Dashboards:** (Upcoming) Visualizing infrastructure health and performance.
 
 ## ⚙️ Prerequisites
@@ -37,3 +38,4 @@ Based on AWS best practices (SAA-C03), these labs cover:
 ## 📚 Labs Index
 1. [Lab 1: CloudWatch Logs & Metric Filters](./labs/lab1-cloudwatch-logs/README.md)
 2. [Lab 2: Automated Alerting (CloudWatch Alarms & SNS)](./labs/lab2-cloudwatch-alarms/README.md)
+3. [Lab 3: API Auditing with AWS CloudTrail](./labs/lab3-cloudwatch-audit/README.md)
