@@ -9,8 +9,8 @@ This repository contains hands-on labs demonstrating core Amazon CloudWatch conc
 Based on AWS best practices (SAA-C03), these labs cover:
 * **Log Management:** Creating log groups and streams to centralize application logs.
 * **Metric Filters:** Automatically extracting numerical data from text logs for monitoring.
-* **CloudWatch Alarms:** (Upcoming) Setting thresholds to trigger notifications or automated actions.
-* **Custom Metrics:** (Upcoming) Publishing application-specific data points.
+* **CloudWatch Alarms:** Setting thresholds to trigger notifications or automated actions via SNS.
+* **Custom Metrics:** Publishing application-specific data points for monitoring.
 * **Dashboards:** (Upcoming) Visualizing infrastructure health and performance.
 
 ## ⚙️ Prerequisites
@@ -36,3 +36,4 @@ Based on AWS best practices (SAA-C03), these labs cover:
 
 ## 📚 Labs Index
 1. [Lab 1: CloudWatch Logs & Metric Filters](./labs/lab1-cloudwatch-logs/README.md)
+2. [Lab 2: Automated Alerting (CloudWatch Alarms & SNS)](./labs/lab2-cloudwatch-alarms/README.md)
