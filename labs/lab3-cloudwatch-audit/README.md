@@ -5,6 +5,7 @@
 ```bash
 # 1. Create the destination S3 bucket for the audit logs
 awslocal s3api create-bucket --bucket organization-audit-logs
+aws s3api create-bucket --bucket organization-audit-logs
 
 # 2. Add a bucket policy allowing CloudTrail to write to it
 cat <<EOF > trail-bucket-policy.json
@@ -28,14 +29,20 @@ cat <<EOF > trail-bucket-policy.json
 }
 EOF
 awslocal s3api put-bucket-policy --bucket organization-audit-logs --policy file://trail-bucket-policy.json
+aws s3api put-bucket-policy --bucket organization-audit-logs --policy file://trail-bucket-policy.json
 
 # 3. Create and Start the multi-region CloudTrail
 awslocal cloudtrail create-trail \
   --name GlobalAuditTrail \
   --s3-bucket-name organization-audit-logs \
   --is-multi-region-trail
+aws cloudtrail create-trail \
+  --name GlobalAuditTrail \
+  --s3-bucket-name organization-audit-logs \
+  --is-multi-region-trail
 
 awslocal cloudtrail start-logging --name GlobalAuditTrail
+aws cloudtrail start-logging --name GlobalAuditTrail
 ```
 
 ## 🧠 Key Concepts & Importance
@@ -58,3 +65,45 @@ awslocal cloudtrail start-logging --name GlobalAuditTrail
     - `--is-multi-region-trail`: Specifies whether the trail is created in the current region or in all regions.
 - `cloudtrail start-logging`: Starts the recording of AWS API calls and delivery of log files for the specified trail.
     - `--name`: The name of the trail to start logging for.
+
+---
+
+💡 **Pro Tip: Using `aws` instead of `awslocal`**
+
+If you prefer using the standard `aws` CLI without the `awslocal` wrapper or repeating the `--endpoint-url` flag, you can configure a dedicated profile in your AWS config files.
+
+### 1. Configure your Profile
+Add the following to your `~/.aws/config` file:
+```ini
+[profile localstack]
+region = us-east-1
+output = json
+# This line redirects all commands for this profile to LocalStack
+endpoint_url = http://localhost:4566
+```
+
+Add matching dummy credentials to your `~/.aws/credentials` file:
+```ini
+[localstack]
+aws_access_key_id = test
+aws_secret_access_key = test
+```
+
+### 2. Use it in your Terminal
+You can now run commands in two ways:
+
+**Option A: Pass the profile flag**
+```bash
+aws iam create-user --user-name DevUser --profile localstack
+```
+
+**Option B: Set an environment variable (Recommended)**
+Set your profile once in your session, and all subsequent `aws` commands will automatically target LocalStack:
+```bash
+export AWS_PROFILE=localstack
+aws iam create-user --user-name DevUser
+```
+
+### Why this works
+- **Precedence**: The AWS CLI (v2) supports a global `endpoint_url` setting within a profile. When this is set, the CLI automatically redirects all API calls for that profile to your local container instead of the real AWS cloud.
+- **Convenience**: This allows you to use the standard documentation commands exactly as written, which is helpful if you are copy-pasting examples from AWS labs or tutorials.
