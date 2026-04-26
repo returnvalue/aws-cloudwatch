@@ -1,7 +1,6 @@
 # Lab 2: Automated Alerting (CloudWatch Alarms & SNS)
 
 **Goal:** Now that we have a custom metric tracking errors, create a CloudWatch Alarm that triggers an SNS email notification if the error count reaches our threshold.
-
 ```bash
 # 1. Create an SNS Topic for Alerts
 TOPIC_ARN=$(awslocal sns create-topic --name CriticalAlertsTopic --query 'TopicArn' --output text)

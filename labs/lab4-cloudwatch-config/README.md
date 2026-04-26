@@ -1,7 +1,6 @@
 # Lab 4: Continuous Compliance (AWS Config)
 
 **Goal:** Instead of manually checking if resources meet security standards, use AWS Config to continuously evaluate infrastructure. We will deploy a rule ensuring all S3 buckets have versioning enabled.
-
 ```bash
 # 1. Create an IAM Role allowing AWS Config to scan resources
 cat <<EOF > config-trust.json

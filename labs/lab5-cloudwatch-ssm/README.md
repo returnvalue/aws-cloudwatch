@@ -1,7 +1,6 @@
 # Lab 5: Secure Operations (Systems Manager Parameter Store)
 
 **Goal:** Stop embedding database passwords in your application code. Store them securely in SSM Parameter Store using KMS encryption, and retrieve them programmatically.
-
 ```bash
 # 1. Store a secure, encrypted parameter (Simulating a DB password)
 # Note: Using single quotes prevents bash from misinterpreting special characters like '!'

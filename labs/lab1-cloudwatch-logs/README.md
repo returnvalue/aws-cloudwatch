@@ -1,7 +1,6 @@
 # Lab 1: CloudWatch Logs & Metric Filters
 
 **Goal:** Applications generate logs continuously. Instead of manually searching for errors, we will create a Metric Filter that automatically scans incoming CloudWatch logs for the word "ERROR" and converts it into a numerical metric.
-
 ```bash
 # 1. Create a Log Group and a Log Stream
 awslocal logs create-log-group --log-group-name /app/production

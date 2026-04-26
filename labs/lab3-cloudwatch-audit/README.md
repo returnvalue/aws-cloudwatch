@@ -1,7 +1,6 @@
 # Lab 3: API Auditing with AWS CloudTrail
 
 **Goal:** Security and compliance require tracking who did what and when. We will create a multi-region CloudTrail to log all AWS API calls into a secure S3 bucket.
-
 ```bash
 # 1. Create the destination S3 bucket for the audit logs
 awslocal s3api create-bucket --bucket organization-audit-logs
